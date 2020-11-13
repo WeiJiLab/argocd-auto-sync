@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: "application"
+
+group = 'com.thoughtworks'
+version = '0.0.1'
+sourceCompatibility = '8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+
+// 构建 ./gradlew fatJar
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'com.thoughtworks.argocd.autosync.ArgoCDAutoApplication' // 启动类全路径，需要根据项目自定义，或者不配置
+    }
+    archiveName "argocd-auto-sync-${version}.jar"
+    baseName = project.name + '-fatJar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
