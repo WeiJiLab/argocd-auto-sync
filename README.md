@@ -33,6 +33,17 @@ java -jar build/libs/argocd-auto-sync-0.0.1.jar
 | filePath            | 配置文件所在的粒径   | 临时文件缓存目录，用于保存临时处理的文件，处理后会被删除 |
 | replaceMap         | <key,value>       | 需要替换的内容                                      |
 
+### 数组变量用法
+```yaml
+environments:
+  - name: AA_BB_CC_DD
+    value: default
+
+// 写法为
+environments[0].name=AA_BB_CC_DD,environments[0].value=default
+```
+
+
 ## 运行
 ```shell script
 java -jar build/libs/argocd-auto-sync-0.0.1.jar user/repo token filepath [image.tag=11111, replicaCount=5]

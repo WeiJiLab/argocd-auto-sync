@@ -1,0 +1,40 @@
+image:
+  pullPolicy: 111111111
+  repository: xcdsfsdfdffdf.dkr.ecr.ap-northeast-1.amazonaws.com/scp-api
+  tag: sdsfsdffs.15
+
+environments:
+  - name: AA_BB_CC_DD
+    value: default
+
+test:
+  earlybird:
+    aaaaa:
+      bbbbb:
+        - cccc1
+        - cccc2
+        - cccc3
+      ddddd:
+        eeeee: "eeeee"
+    test: "aabbccdd"
+  system-roles:
+    test-ids:
+      - id: 11111
+        name: 11111
+      - id: 22222
+        name: 22222
+      - id: 33333
+        name: 33333
+      - id: 44444
+        name: 44444
+      - id: 55555
+        name: 55555
+      - id: 66666
+        name: 66666
+      - id: 77777
+        name: 77777
+      - id: 88888
+        name: 88888
+
+
+
